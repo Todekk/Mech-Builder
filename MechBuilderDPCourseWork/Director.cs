@@ -8,5 +8,14 @@ namespace Creational_Pattern
 {
     internal class Director
     {
+        public void Construct(MechBuilder mechBuilder)
+        {
+            mechBuilder.BuildClass();
+            mechBuilder.BuildEngine();
+            mechBuilder.BuildMainHandWeapon();
+            mechBuilder.BuildOffHandWeapon();
+            mechBuilder.BuildSpecialWeapon();
+        }
+        
     }
 }
