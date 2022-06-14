@@ -14,7 +14,7 @@ namespace PCBuilder.BuilderPattern
         {
             PCBuilder builder;
             Director director = new Director();
-            ConfigPC config = new ConfigPC("Test");            
+            ConfigPC config = new ConfigPC("Buyer");            
             Console.WriteLine("Pick a PC Configuration");
             Console.WriteLine("High End, Mid End or Low End ");
             string userResponse = Console.ReadLine();
@@ -48,7 +48,7 @@ namespace PCBuilder.BuilderPattern
         {
             PCBuilder builder;
             Director director = new Director();
-            ConfigPC config = new ConfigPC("Test");
+            ConfigPC config = new ConfigPC("Buyer");
             Buyer buyer = new Buyer(config);
             string buildChoice = Console.ReadLine();
             switch (buildChoice.ToLower())
