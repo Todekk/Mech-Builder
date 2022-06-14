@@ -1,40 +1,51 @@
-﻿namespace Creational_Pattern
+﻿using PCBuilder.DecoratorPattern;
+using PCBuilder.IteratorPattern;
+using PCBuilder.BuilderPattern;
+namespace PCBuilder
 {
     class Program
     {
         static void Main()
         {
-            MechBuilder builder;
+            PCBuilder builder;
             Director director = new Director();
+            ConfigPC config = new ConfigPC("Test");
+            Buyer buyer = new Buyer(config);
 
-            Console.WriteLine("Pick a Mech");
-            Console.WriteLine("Defensive, Offensive or Balanced ");
+            Console.Write("ENTER YOUR NAME: ");
+            buyer.BuyItem(Console.ReadLine());
 
+            Console.WriteLine("CUSTOM or PREBUILT PC");
             string userResponse = Console.ReadLine();
 
             switch(userResponse.ToLower())
             {
-                case "offensive":
-                    builder = new OffensiveMechBuilder();
-                    director.Construct(builder);
-                    builder.Mech.Present();
+                case "custom":
+                    PCBuilding.BuildingCustomEndPC();
+                    buyer.Display();
                     break;
-                case "defensive":
-                    builder = new DefensiveMechBuilder();
-                    director.Construct(builder);
-                    builder.Mech.Present();
+                case "prebuilt":
+                    ConcreteAggregate a = new ConcreteAggregate();
+                    a[0] = "1. High End Configuration: 3500 lv.";
+                    a[1] = "2. Mid End Configuration: 2400 lv.";
+                    a[2] = "3. Low End Configuration: 1500 lv.";                    
+                    Iterator i = a.CreateIterator();
+                    Console.WriteLine("Iterating over collection:");
+                    object item = i.First();
+                    while (item != null)
+                    {
+                        Console.WriteLine(item);
+                        item = i.Next();
+                    }
+                    PCBuilding.BuildingPreBuiltPC();
+                    buyer.Display();
                     break;
-                case "balanced":
-                    builder = new BalancedMechBuilder();
-                    director.Construct(builder);
-                    builder.Mech.Present();
-                    break;
-
                 default:
                     Console.WriteLine("Invalid Input");
                     break;
             }
-            
+
+           
         }
     }
 }
