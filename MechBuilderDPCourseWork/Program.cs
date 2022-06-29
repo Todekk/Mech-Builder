@@ -12,7 +12,7 @@ namespace PCBuilder
             ConfigPC config = new ConfigPC("Buyer");
             Buyer buyer = new Buyer(config);
 
-            Console.Write("ENTER YOUR NAME: ");
+            Console.Write("ENTER USERNAME: ");
             buyer.BuyItem(Console.ReadLine());
 
             Console.WriteLine("CUSTOM or PREBUILT PC");
